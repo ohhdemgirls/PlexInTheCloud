@@ -9,7 +9,7 @@ pip install lxml cryptography pyopenssl
 
 ## Install Couchpotato
 mkdir /opt/couchpotato
-sudo -u $username git https://github.com/CouchPotato/CouchPotatoServer.git /opt/couchpotato
+git clone https://github.com/CouchPotato/CouchPotatoServer.git /opt/couchpotato/
 chown -R $username:$username /opt/couchpotato
 
 ## Systemd Service file
@@ -27,7 +27,7 @@ After=rcloneMount.service
 ExecStart=/opt/couchpotato/CouchPotato.py
 Type=simple
 User=$username
-Group$username
+Group=$username
 
 [Install]
 WantedBy=multi-user.target
@@ -45,7 +45,7 @@ echo ''
 echo "Would you like us to open the port in UFW?"
 select yn in "Yes" "No"; do
     case $yn in
-        Yes ) ufw allow 8080; echo ''; echo "Port 8080 open, CouchPotato is now available over the internet."; echo ''; break;;
-        No ) echo "Port 8080 left closed. You can still access it on your local machine by issuing the following command: ssh $username@$ipaddr -L 8080:localhost:8080"; echo "and then open localhost:8080 on your browser."; exit;;
+        Yes ) ufw allow 5050; echo ''; echo "Port 5050 open, CouchPotato is now available over the internet."; echo ''; break;;
+        No ) echo "Port 5050 left closed. You can still access it from your local machine by issuing the following command: ssh $username@$ipaddr -L 5050:localhost:5050"; echo "and then open localhost:5050 on your browser."; exit;;
     esac
 done
