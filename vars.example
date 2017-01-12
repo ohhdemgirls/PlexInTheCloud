@@ -1,0 +1,34 @@
+# Username and Password
+username="USERNAME"
+passwd="PASSWORD"
+
+# Networking
+hostname=""
+ipaddr=""
+fqdn="$hostname.members.linode.com"
+timezone="America/Los_Angeles"
+
+# Rclone Crypt
+encrypted="AMZe"
+local="LOCAL"
+overlayfuse="ALL"
+
+# Plex
+plexToken=""
+plexUsername=""
+plexPassword=""
+
+# OpenSubTitles
+openSubtitlesUsername=""
+openSubtitlesPassword=""
+openSubtitlesLang=""
+
+# News Server
+newsServer=""
+nsHostname=""
+nsPort=""
+nsUsername=""
+nsPassword=""
+nsEncryption="yes"
+nsConnections="20"
+nsRetention="1000"
