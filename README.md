@@ -4,11 +4,18 @@ Run Plex in the cloud. Use rclone crypt to mount and encrypt/decrypt your (unlim
 These scripts will install and configure:
 
 - Plex
+    - IP:32400/web
+- PlexPy
+    - localhost:8181
 - NZBget
-- nzbToMedia Post-Processing
+    - localhost:6789
 - SickRage
+    - localhost:8081
 - CouchPotato
+    - localhost:5050
+- nzbToMedia Post-Processing
 - rclone + crypt
+
 
 ## Example Workflow
 - Systemd calls on rclone to mount your directories on boot
