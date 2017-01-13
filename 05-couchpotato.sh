@@ -2,6 +2,12 @@
 source vars
 
 # Install CouchPotato
+## Create our Directory
+mkdir /home/$username/nzbget/completed/movies
+chown -R $username:$username /home/$username/nzbget/completed/movies
+mkdir /home/$username/$local/movies
+chown -R $username:$username /home/$username/$local/movies
+
 ## Install dependencies
 apt-get install -y git-core libffi-dev libssl-dev zlib1g-dev libxslt1-dev libxml2-dev python python-pip python-dev build-essential
 
@@ -33,7 +39,7 @@ sed -i "s/^username = nzbget/username = $username/g" /home/$username/.couchpotat
 sed -i "s/^category = Movies/category = movies/g" /home/$username/.couchpotato/settings.conf
 
 perl -i -0pe "s/username = nzbget\ncategory = Movies\ndelete_failed = True\nmanual = 0\nenabled = 0\npriority = 0\nssl = 0/username = $username\ncategory = movies\ndelete_failed = True\nmanual = 0\nenabled = 1\npriority = 0\n ssl = 0/" /home/$username/.couchpotato/settings.conf
-perl -i -0pe "s/6789\npassword =/6789\npassword = $passwd\n/" /home/$username/.couchpotato/settings.conf
+perl -i -0pe "s/6789\npassword =/6789\npassword = $cppasswd\n/" /home/$username/.couchpotato/settings.conf
 
 ## Systemd Service file
 cp -v /opt/couchpotato/init/couchpotato.service /etc/systemd/system/couchpotato.service

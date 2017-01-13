@@ -40,7 +40,7 @@ git clone https://github.com/clinton-hall/nzbToMedia.git /home/$username/nzbget/
 ## Copy default scripts to new location
 cp /opt/nzbget/scripts/* /home/$username/nzbget/scripts/
 
-## Add our upload script that uploads contents to Amazon Cloud Drive
+## Add our upload script that uploads TV to Amazon Cloud Drive
 tee "/home/$username/nzbget/scripts/uploadTV.sh" > /dev/null <<EOF
 #!/bin/bash
 
@@ -63,6 +63,31 @@ exit 93
 EOF
 
 chmod +x /home/$username/nzbget/scripts/uploadTV.sh
+
+## Add our upload script that uploads Movies to Amazon Cloud Drive
+tee "/home/$username/nzbget/scripts/uploadMovies.sh" > /dev/null <<EOF
+#!/bin/bash
+
+#######################################
+### NZBGET POST-PROCESSING SCRIPT   ###
+
+# Rclone upload to Amazon Cloud Drive
+
+# Wait for NZBget/Sickrage to finish moving files
+sleep 10s
+
+# Upload
+rclone move -c /home/$username/$local/movies $encrypted:movies
+
+# Tell Plex to update the Library
+#wget http://localhost:32400/library/sections/3/refresh?X-Plex-Token=kp9dTjwxqD8zQyznSBRb
+
+# Send PP Success code
+exit 93
+EOF
+
+chmod +x /home/$username/nzbget/scripts/uploadMovies.sh
+
 
 ## Create symlink that the scripts look for when running Python
 ln -sf /usr/bin/python2.7 /usr/bin/python2
