@@ -7,6 +7,8 @@ These scripts will install and configure:
     - IP:32400/web
 - PlexPy
     - localhost:8181
+- PlexRequests
+    - localhost:3000
 - NZBget
     - localhost:6789
 - SickRage
@@ -58,5 +60,10 @@ These scripts will install and configure:
 (see issues)
 
 # FAQ
-Q: Why bash rather than Docker/Ansible/Saltstack/Chef/Puppet/your-personal-favorite-thing
+Q: Why bash rather than Docker/Ansible/Saltstack/Chef/Puppet/your-personal-favorite-thing    
 A: I deal with all of that for work and I love those tools, but they do have a learning curve and I want this to be easy to approach, modify, and use.
+
+Q: How can I use SSH port forwarding to access all the things?    
+A: Run the following command from your local machine and then open a browser and point to localhost:$PORT.    
+    `ssh $USERNAME@$IP -L 6789:localhost:6789 -L 8081:localhost:8081 -L 5050:localhost:5050 -L 8181:localhost:8181 -L 3000:localhost:3000`
+
