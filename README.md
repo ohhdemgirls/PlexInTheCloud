@@ -48,15 +48,8 @@ These scripts will install and configure:
     - (EXAMPLE: Enabling remote access for Plex requires manual steps. The script that installs Plex will pause, tell you what to do, and ask you to type "y" once you've completed the manual steps. Once you type "y" the script will continue on it's way.)
 
 # TODO
-- 01-rclone-acd.sh
-    - cli/automate rclone ACD initial setup?
-        - use headless browser and ENV_VARS to login to http://127.0.0.1:53682/auth and scrape results before writing them into the config file?
-- 02-plex.sh
-    - Plex configs
-    - Install Plex ComicReader channel
-    - Install plexpy
-    - Install plex requests
-- 06-mylar.sh
-- 07-rutorrent.sh
-- OPTIMIZE SOFTWARE SETTINGS
-- Detailed guide with screenshots
+(see issues)
+
+# FAQ
+Q: Why bash rather than Docker/Ansible/Saltstack/Chef/Puppet/your-personal-favorite-thing
+A: I deal with all of that for work and I love those tools, but they do have a learning curve and I want this to be easy to approach, modify, and use.
